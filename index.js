@@ -6,7 +6,7 @@ const client = new Client({
     ]
 });
 
-// Define a simple slash command
+// Define commands
 const commands = [
     new SlashCommandBuilder()
         .setName('ping')
@@ -16,7 +16,6 @@ const commands = [
 client.once('ready', async () => {
     console.log(`Bot logged in as ${client.user.tag}`);
 
-    // Register slash commands
     const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
     try {
@@ -26,7 +25,7 @@ client.once('ready', async () => {
         );
         console.log('Slash commands registered.');
     } catch (error) {
-        console.error('Error registering commands:', error);
+        console.error(error);
     }
 });
 
